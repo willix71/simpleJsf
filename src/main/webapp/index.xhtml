@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:p="http://primefaces.org/ui" 
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:sjsf="http://simple-jsf.com/sjsf"
+	>
+
+<h:head>
+	<title>Simple JSF</title>
+</h:head>
+
+<h:body>
+	<h:form>
+		<H1>#{dataController.name}</H1>
+		
+		<p/>
+		
+		<p:dataTable id="footprintsTable" widgetVar="w_footprintsTable" styleClass="js-table-rbs"
+			value="#{dataController.datas}" var="d"
+			rowKey="#{d.name}" selection="#{dataController.selectedData}" selectionMode="single"
+			paginator="true" rows="100" rowsPerPageTemplate="20,100,1000"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+            currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords}"
+			resizableColumns="true" stickyHeader="true"	multiViewState="true"
+			>
+			
+            <f:facet name="header">
+	            <div class="p-d-flex p-jc-between p-ai-center">
+	            	Data for #{dataController.name}				
+	                <div style="float:right" >
+	                    <p:commandButton id="toggler" type="button" value="Columns" icon="pi pi-align-justify"/>
+	                    <p:columnToggler datasource="footprintsTable" trigger="toggler"/>
+	                    <p:commandButton value="Clear" action="#{dataController.clearMultiViewState}" update="@form"/>
+	                </div>
+	            </div>            
+            </f:facet>
+		
+		    <p:column headerText="Name" sortBy="#{d.name}" >
+                <h:outputText value="#{d.name}"/>
+            </p:column>
+
+            <p:column headerText="one" filterBy="#{d.one}" styleClass="ps-footprint-type ps-vertical-title" >
+				<f:facet name="filter">
+			        <p:triStateCheckbox onchange="PF('w_footprintsTable').filter()" converter="triStateBooleanConverter" />
+				</f:facet>
+				<h:panelGroup rendered="#{d.one}">
+					<i class="pi pi-check">v</i>
+				</h:panelGroup>
+            </p:column>    
+            <p:column headerText="two" filterBy="#{d.two}" styleClass="ps-footprint-type ps-vertical-title" >
+				<f:facet name="filter">
+			        <p:triStateCheckbox onchange="PF('w_footprintsTable').filter()" converter="triStateBooleanConverter" />
+				</f:facet>
+				<h:panelGroup rendered="#{d.two}">
+					<i class="pi pi-check">v</i>
+				</h:panelGroup>
+            </p:column>    
+             <p:column headerText="three" filterBy="#{d.three}" styleClass="ps-footprint-type ps-vertical-title" >
+				<f:facet name="filter">
+			        <p:triStateCheckbox onchange="PF('w_footprintsTable').filter()" converter="triStateBooleanConverter" />
+				</f:facet>
+				<h:panelGroup rendered="#{d.three}">
+					<i class="pi pi-check">v</i>
+				</h:panelGroup>
+            </p:column>    
+                                        
+            <sjsf:booleanColumn value="#{d.four}" header="three" tableWidget="w_footprintsTable"/>
+            <sjsf:booleanColumn value="#{d.five}" header="five" tableWidget="w_footprintsTable"/>
+            <sjsf:booleanColumn value="#{d.six}" header="six" tableWidget="w_footprintsTable"/>
+                                    
+		</p:dataTable>            
+	</h:form>
+</h:body>
+</html>

@@ -5,9 +5,9 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:cc="http://java.sun.com/jsf/composite">
 
-	<p:column headerText="#{header}" filterBy="#{value}" styleClass="sj-vertical-title" >
+	<p:column id="#{header}_id" headerText="#{header}" filterBy="#{value}" styleClass="sj-vertical-title" >
 		<f:facet name="filter">
-			<p:triStateCheckbox onchange="PF('#{tableWidget}').filter()" converter="triStateBooleanConverter" />
+			<p:triStateCheckbox id="#{header}_tryid" onchange="PF('#{tableWidget}').filter()" converter="triStateBooleanConverter" />
 		</f:facet>
 		<h:panelGroup rendered="#{value}">
 			<i class="pi pi-check">V</i>

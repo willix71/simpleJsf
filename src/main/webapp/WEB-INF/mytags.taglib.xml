@@ -12,10 +12,11 @@
         <attribute>
             <description>Column value</description>
             <name>value</name>
+            <type>wx.simple.jsf.SimpleData</type>
         </attribute>
         <attribute>
-            <description>Column header</description>
-            <name>header</name>
+            <description>Property to display</description>
+            <name>property</name>
         </attribute>
         <attribute>
             <description>Table Widget</description>

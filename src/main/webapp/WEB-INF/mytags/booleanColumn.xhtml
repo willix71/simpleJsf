@@ -5,11 +5,11 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:cc="http://java.sun.com/jsf/composite">
 
-	<p:column id="#{header}_id" headerText="#{header}" filterBy="#{value}" styleClass="sj-vertical-title" >
+	<p:column id="#{property}_id" headerText="#{property}" filterBy="#{value[property]}" styleClass="sj-vertical-title" >
 		<f:facet name="filter">
-			<p:triStateCheckbox id="#{header}_tryid" onchange="PF('#{tableWidget}').filter()" converter="triStateBooleanConverter" />
+			<p:triStateCheckbox id="#{property}_tryid" onchange="PF('#{tableWidget}').filter()" converter="triStateBooleanConverter" />
 		</f:facet>
-		<h:panelGroup rendered="#{value}">
+		<h:panelGroup rendered="#{value[property]}">
 			<i class="pi pi-check">V</i>
 		</h:panelGroup>
 	</p:column>

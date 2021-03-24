@@ -19,23 +19,8 @@
 		<p:dataTable id="footprintsTable" widgetVar="w_footprintsTable" styleClass="js-table-rbs"
 			value="#{dataController.datas}" var="d"
 			rowKey="#{d.name}" selection="#{dataController.selectedData}" selectionMode="single"
-			paginator="true" rows="100" rowsPerPageTemplate="20,100,1000"
-			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-            currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords}"
-			resizableColumns="true" stickyHeader="true"	multiViewState="true"
+			rows="100"
 			>
-			
-            <f:facet name="header">
-	            <div class="p-d-flex p-jc-between p-ai-center">
-	            	Data for #{dataController.name}				
-	                <div style="float:right" >
-	                    <p:commandButton id="toggler" type="button" value="Columns" icon="pi pi-align-justify"/>
-	                    <p:columnToggler datasource="footprintsTable" trigger="toggler"/>
-	                    <p:commandButton value="Clear" action="#{dataController.clearMultiViewState}" update="@form"/>
-	                </div>
-	            </div>            
-            </f:facet>
-		
 		    <p:column headerText="Name" sortBy="#{d.name}" >
                 <h:outputText value="#{d.name}"/>
             </p:column>
